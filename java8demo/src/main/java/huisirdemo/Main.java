@@ -12,7 +12,6 @@ import java.util.stream.IntStream;
 /**
  * 
  **********************************************************
- * @作者: huisir
  * @日期: 2018年8月11日
  * @描述: 测试 ParallelStream ， 测试CompletableFutureDefaultExecutor， 测试CompletableFutureCustomExecutor
  **********************************************************
@@ -97,7 +96,7 @@ public class Main {
      * @throws ExecutionException
      */
     private static long testCompletableFutureCustomExecutor2(int jobCount) throws InterruptedException, ExecutionException {
-        Executor executor = new ForkJoinPool(10);
+        Executor executor = new ForkJoinPool(11);
  
         long start = System.currentTimeMillis();
         ArrayList<CompletableFuture<Integer>> list = new ArrayList<>();
@@ -127,8 +126,9 @@ public class Main {
     
     public static void main(String[] args) {
 		try {
-			System.out.println(testCompletableFutureCustomExecutor2(10));
-		} catch (InterruptedException | ExecutionException e) {
+			System.out.println(testCompletableFutureDefaultExecutor(10));
+			System.out.println(testStream(10));
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
